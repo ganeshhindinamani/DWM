@@ -1,0 +1,17 @@
+#!/bin/sh
+
+echo "Choosing a random wallpaper...."
+wall=$(find $HOME/Desktop/Pix -type f | shuf -n 1)
+echo "Setting up wallpaper...."
+xwallpaper --zoom $wall
+echo "Generating pywal color schemes...."
+wal -i $wall >/dev/null
+echo "New wallpaper set..."
+
+xdotool key "Super_L+F5"
+
+
+#echo "Recompiling dwm with new colors...."
+#sed -i 'N;$!P;D' $HOME/.cache/wal/colors-wal-dwm.h
+#(cd $HOME/suckless/dwm-autostart && sudo make clean install>/dev/null)
+#(cd $HOME/suckless-test/dwm-autostart && sudo make clean install>/dev/null)
